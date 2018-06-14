@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Formation from "../model/Formation";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-formations',
@@ -8,15 +9,11 @@ import Formation from "../model/Formation";
 })
 export class FormationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route : ActivatedRoute) { }
 
   formations:Array<Formation>;
 
   ngOnInit() {
-    this.formations = [
-      new Formation("Java"),
-      new Formation("Python"),
-      new Formation("Big Data")
-    ]
+    this.route.data.subscribe(data => this.formations = data['formations']);
   }
 }

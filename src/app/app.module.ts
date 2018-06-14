@@ -9,6 +9,7 @@ import {ROUTES} from './app.routes';
 import { FormationsComponent } from './formations/formations.component';
 import { ConnaissancesComponent } from './connaissances/connaissances.component';
 import {LoggedInGuardGuard} from "./logged-in-guard.guard";
+import {FormationsResolvers} from "./FoormationsResolvers";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {LoggedInGuardGuard} from "./logged-in-guard.guard";
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    LoggedInGuardGuard
+    LoggedInGuardGuard,
+    FormationsResolvers
   ],
   bootstrap: [AppComponent]
 })

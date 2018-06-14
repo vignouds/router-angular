@@ -4,6 +4,7 @@ import {DetailComponent} from './detail/detail.component';
 import {FormationsComponent} from './formations/formations.component';
 import {ConnaissancesComponent} from './connaissances/connaissances.component';
 import {LoggedInGuardGuard} from "./logged-in-guard.guard";
+import {FormationsResolvers} from "./FoormationsResolvers";
 import {PATH_HOME, PATH_DETAIL, PATH_DETAIL_FORMATIONS, PATH_DETAIL_SKILLS} from "./constantes.routes";
 
 
@@ -13,7 +14,7 @@ export const ROUTES: Routes = [
   component: DetailComponent,
   children: [
     {path: "", pathMatch:'full', redirectTo:PATH_DETAIL_FORMATIONS},
-    {path: PATH_DETAIL_FORMATIONS, component: FormationsComponent},
+    {path: PATH_DETAIL_FORMATIONS, component: FormationsComponent, resolve: {formations: FormationsResolvers}},
     {path:PATH_DETAIL_SKILLS, component: ConnaissancesComponent, canActivate:[LoggedInGuardGuard]}
   ]
  }
